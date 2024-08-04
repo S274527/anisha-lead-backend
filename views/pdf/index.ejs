@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+      }
+
+      p {
+        padding: 0;
+        margin: 0;
+      }
+
+      th {
+        background: #eaf5ff;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <table style="width: 550px; margin: auto">
+      <tr>
+        <td>
+          <table style="border-bottom: 1px solid #ccc">
+            <tr>
+              <td style="font-size: 24px; vertical-align: top">Invoice</td>
+              <td style="text-align: right">
+                <img
+                  style="height: 40px; width: 40px"
+                  src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                  alt=""
+                />
+                <div style="margin-top: 30px">
+                  <div style="margin-bottom: 5px; color: #666; font-size: 14px">
+                    GFX, Street xyz, Florida, 12345, US
+                  </div>
+                  <div style="margin-bottom: 5px; color: #666; font-size: 14px">
+                    info@gfx.com
+                  </div>
+                  <div
+                    style="margin-bottom: 20px; color: #666; font-size: 14px"
+                  >
+                    +1 (070) 123-4567
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td style="vertical-align: top; padding-top: 25px; width: 45%">
+                <div>
+                  <p style="display: inline-block; width: 48%; color: #666">
+                    User:
+                  </p>
+                  <p
+                    style="
+                      display: inline-block;
+                      width: 48%;
+                      text-align: right;
+                      color: #000;
+                    "
+                  >
+                    <%= data?.invoice?.user?.full_name %>
+                  </p>
+                </div>
+              </td>
+              <td style="padding-top: 25px; width: 55%">
+                <div style="margin-bottom: 5px">
+                  <p style="display: inline-block; width: 48%; color: #666">
+                    Invoice :
+                  </p>
+                  <p
+                    style="
+                      display: inline-block;
+                      width: 50%;
+                      text-align: right;
+                      color: #000;
+                    "
+                  >
+                    #IN-<%= data?.invoice?.id %>
+                  </p>
+                </div>
+                <div>
+                  <p
+                    style="
+                      display: inline-block;
+                      width: 48%;
+                      color: #666;
+                      padding-top: 0;
+                      padding-bottom: 10px;
+                    "
+                  >
+                    Issue Date :
+                  </p>
+                  <p
+                    style="
+                      display: inline-block;
+                      width: 50%;
+                      text-align: right;
+                      color: #000;
+                    "
+                  >
+                    <%= issueDate %>
+                  </p>
+                </div>
+                <div style="margin-top: -5px;">
+                  <p
+                    style="
+                      display: inline-block;
+                      width: 48%;
+                      color: #666;
+                      padding-top: 0;
+                      padding-bottom: 10px;
+                    "
+                  >
+                    Status :
+                  </p>
+                  <p
+                    style="
+                      display: inline-block;
+                      width: 50%;
+                      text-align: right;
+                      color: #000;
+                      text-transform: uppercase;
+                    "
+                  >
+                    <%= data?.invoice?.status %>
+                  </p>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <table style="margin-top: 10px; border: 1px solid #ccc">
+            <tr>
+              <th>S.NO</th>
+              <th>PLAN</th>
+              <th>BILLING CYCLE</th>
+              <th>TYPE</th>
+              <th>PRICE</th>
+              <th>AMOUNT</th>
+            </tr>
+            <tr>
+              <td
+                style="
+                  text-align: center;
+                  padding-top: 5px;
+                  padding-bottom: 5px;
+                "
+              >
+                1
+              </td>
+              <td
+                style="
+                  text-align: center;
+                  padding-top: 5px;
+                  padding-bottom: 5px;
+                  text-transform: capitalize;
+                "
+              >
+                <%= data?.subscription?.plan_name %>
+              </td>
+              <td
+                style="
+                  text-align: center;
+                  padding-top: 5px;
+                  padding-bottom: 5px;
+                  text-transform: capitalize;
+                "
+              >
+                <%= data?.subscription?.time_type %>
+              </td>
+              <td
+                style="
+                  text-align: center;
+                  padding-top: 5px;
+                  padding-bottom: 5px;
+                  text-transform: capitalize;
+                "
+              >
+                <%= data?.subscription?.type %>
+              </td>
+              <td
+                style="
+                  text-align: center;
+                  padding-top: 5px;
+                  padding-bottom: 5px;
+                "
+              >
+                $<%= data?.subscription?.plan_amount ? parseFloat(data?.subscription?.plan_amount)?.toFixed(2) : "0.00" %>
+              </td>
+              <td
+                style="
+                  text-align: center;
+                  padding-top: 5px;
+                  padding-bottom: 5px;
+                "
+              >
+                $<%= data?.subscription?.total ? parseFloat(data?.subscription?.total)?.toFixed(2) : "0.00" %>
+              </td>
+            </tr>
+          </table>
+          <table style="margin-top: 20px">
+            <tr>
+              <td style="width: 50%"></td>
+              <td style="width: 50%">
+                <div style="margin-bottom: 5px">
+                  <p style="display: inline-block; width: 48%; color: #666 ; font-size: 16px;">
+                    Subtotal:
+                  </p>
+                  <p
+                    style="
+                      display: inline-block;
+                      width: 50%;
+                      text-align: right;
+                      color: #000;
+                      font-size: 16px;
+                    "
+                  >
+                    $<%= data?.subscription?.plan_amount ? parseFloat(data?.subscription?.plan_amount)?.toFixed(2) : "0.00" %>
+                  </p>
+                </div>
+                <div style="margin-bottom: 5px">
+                    <p style="display: inline-block; width: 48%; color: #666 ; font-size: 22px; font-weight: 700; color: #000;">
+                        Grand Total:
+                    </p>
+                    <p
+                      style="
+                        display: inline-block;
+                        width: 50%;
+                        text-align: right;
+                        color: #000;
+                        font-size: 22px;
+                        font-weight: 700;
+                      
+                      "
+                    >
+                        $<%= data?.subscription?.total ? parseFloat(data?.subscription?.total)?.toFixed(2) : "0.00" %>
+                    </p>
+                  </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
